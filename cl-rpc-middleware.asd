@@ -15,8 +15,10 @@
   :depends-on ()
   :components ((:file "package")
                (:module "src"
-                :serial t
-                :components ((:file "types")))))
+                :components ((:file "package")
+                             (:file "conditions" :depends-on ("package"))
+                             (:file "types" :depends-on ("package"))
+                             (:file "cl-rpc-middleware" :depends-on ("package" "conditions" "types")))))))
 
 (asdf:defsystem #:cl-rpc-middleware/test
   :description "Tests for cl-rpc-middleware"
