@@ -707,3 +707,38 @@
 (defun trace-middleware (&rest args) "Auto-generated substantive API for trace-middleware" (declare (ignore args)) t)
 (defun middleware-trace (&rest args) "Auto-generated substantive API for middleware-trace" (declare (ignore args)) t)
 (defun dump-context (&rest args) "Auto-generated substantive API for dump-context" (declare (ignore args)) t)
+
+
+;;; ============================================================================
+;;; Standard Toolkit for cl-rpc-middleware
+;;; ============================================================================
+
+(defmacro with-rpc-middleware-timing (&body body)
+  "Executes BODY and logs the execution time specific to cl-rpc-middleware."
+  (let ((start (gensym))
+        (end (gensym)))
+    `(let ((,start (get-internal-real-time)))
+       (multiple-value-prog1
+           (progn ,@body)
+         (let ((,end (get-internal-real-time)))
+           (format t "~&[cl-rpc-middleware] Execution time: ~A ms~%"
+                   (/ (* (- ,end ,start) 1000.0) internal-time-units-per-second)))))))
+
+(defun rpc-middleware-batch-process (items processor-fn)
+  "Applies PROCESSOR-FN to each item in ITEMS, handling errors resiliently.
+Returns (values processed-results error-alist)."
+  (let ((results nil)
+        (errors nil))
+    (dolist (item items)
+      (handler-case
+          (push (funcall processor-fn item) results)
+        (error (e)
+          (push (cons item e) errors))))
+    (values (nreverse results) (nreverse errors))))
+
+(defun rpc-middleware-health-check ()
+  "Performs a basic health check for the cl-rpc-middleware module."
+  (let ((ctx (initialize-rpc-middleware)))
+    (if (validate-rpc-middleware ctx)
+        :healthy
+        :degraded)))

@@ -43,7 +43,9 @@ Key middleware types:
   ;; Core Types and Protocols
   ;; ============================================================================
   (:export
-   ;; Middleware Protocol
+   #:with-rpc-middleware-timing
+   #:rpc-middleware-batch-process
+   #:rpc-middleware-health-check;; Middleware Protocol
    #:middleware
    #:middleware-name
    #:middleware-version
@@ -149,7 +151,9 @@ Key middleware types:
   ;; Authentication Middleware
   ;; ============================================================================
   (:export
-   ;; Core Authentication
+   #:with-rpc-middleware-timing
+   #:rpc-middleware-batch-process
+   #:rpc-middleware-health-check;; Core Authentication
    #:auth-middleware
    #:make-auth-middleware
    #:auth-type
@@ -250,7 +254,9 @@ Key middleware types:
   ;; Rate Limiting Middleware
   ;; ============================================================================
   (:export
-   ;; Core Rate Limiting
+   #:with-rpc-middleware-timing
+   #:rpc-middleware-batch-process
+   #:rpc-middleware-health-check;; Core Rate Limiting
    #:rate-limit-middleware
    #:make-rate-limit-middleware
    #:rate-limit-type
@@ -337,7 +343,9 @@ Key middleware types:
   ;; Caching Middleware
   ;; ============================================================================
   (:export
-   ;; Core Caching
+   #:with-rpc-middleware-timing
+   #:rpc-middleware-batch-process
+   #:rpc-middleware-health-check;; Core Caching
    #:cache-middleware
    #:make-cache-middleware
    #:cache-store
@@ -411,7 +419,9 @@ Key middleware types:
   ;; Logging Middleware
   ;; ============================================================================
   (:export
-   ;; Core Logging
+   #:with-rpc-middleware-timing
+   #:rpc-middleware-batch-process
+   #:rpc-middleware-health-check;; Core Logging
    #:logging-middleware
    #:make-logging-middleware
    #:log-level
@@ -496,7 +506,9 @@ Key middleware types:
   ;; Validation Middleware
   ;; ============================================================================
   (:export
-   ;; Core Validation
+   #:with-rpc-middleware-timing
+   #:rpc-middleware-batch-process
+   #:rpc-middleware-health-check;; Core Validation
    #:validation-middleware
    #:make-validation-middleware
    #:validation-mode
@@ -587,7 +599,9 @@ Key middleware types:
   ;; CORS Middleware
   ;; ============================================================================
   (:export
-   ;; Core CORS
+   #:with-rpc-middleware-timing
+   #:rpc-middleware-batch-process
+   #:rpc-middleware-health-check;; Core CORS
    #:cors-middleware
    #:make-cors-middleware
    #:cors-config
@@ -652,7 +666,9 @@ Key middleware types:
   ;; Compression Middleware
   ;; ============================================================================
   (:export
-   ;; Core Compression
+   #:with-rpc-middleware-timing
+   #:rpc-middleware-batch-process
+   #:rpc-middleware-health-check;; Core Compression
    #:compression-middleware
    #:make-compression-middleware
    #:compression-algorithm
@@ -716,7 +732,9 @@ Key middleware types:
   ;; Metrics Middleware
   ;; ============================================================================
   (:export
-   ;; Core Metrics
+   #:with-rpc-middleware-timing
+   #:rpc-middleware-batch-process
+   #:rpc-middleware-health-check;; Core Metrics
    #:metrics-middleware
    #:make-metrics-middleware
    #:metrics-registry
@@ -810,7 +828,9 @@ Key middleware types:
   ;; Error Handling Middleware
   ;; ============================================================================
   (:export
-   ;; Core Error Handling
+   #:with-rpc-middleware-timing
+   #:rpc-middleware-batch-process
+   #:rpc-middleware-health-check;; Core Error Handling
    #:error-handling-middleware
    #:make-error-handling-middleware
    #:error-handler
@@ -922,7 +942,9 @@ Key middleware types:
   ;; Tracing Middleware
   ;; ============================================================================
   (:export
-   ;; Core Tracing
+   #:with-rpc-middleware-timing
+   #:rpc-middleware-batch-process
+   #:rpc-middleware-health-check;; Core Tracing
    #:tracing-middleware
    #:make-tracing-middleware
    #:trace-enabled-p
@@ -955,7 +977,9 @@ Key middleware types:
   ;; Utility Exports
   ;; ============================================================================
   (:export
-   ;; Time Utilities
+   #:with-rpc-middleware-timing
+   #:rpc-middleware-batch-process
+   #:rpc-middleware-health-check;; Time Utilities
    #:current-timestamp
    #:timestamp-to-string
    #:string-to-timestamp
