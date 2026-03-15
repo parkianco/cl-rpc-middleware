@@ -1,10 +1,10 @@
 ;; Copyright (c) 2024-2026 Parkian Company LLC. All rights reserved.
-;; SPDX-License-Identifier: BSD-3-Clause
+;; SPDX-License-Identifier: Apache-2.0
 
 ;;;; test-rpc-middleware.lisp - Unit tests for rpc-middleware
 ;;;;
 ;;;; Copyright (c) 2024-2026 Parkian Company LLC. All rights reserved.
-;;;; SPDX-License-Identifier: BSD-3-Clause
+;;;; SPDX-License-Identifier: Apache-2.0
 
 (defpackage #:cl-rpc-middleware.test
   (:use #:cl)
