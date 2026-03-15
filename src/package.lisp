@@ -846,7 +846,7 @@ Key middleware types:
    #:rpc-error-message
    #:rpc-error-data
    #:make-rpc-error
-   #:parse-error
+   #:rpc-parse-error
    #:invalid-request-error
    #:method-not-found-error
    #:invalid-params-error

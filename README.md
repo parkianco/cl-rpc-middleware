@@ -1,28 +1,38 @@
 # cl-rpc-middleware
 
-Pure Common Lisp implementation of Rpc Middleware
+`cl-rpc-middleware` is a Common Lisp middleware scaffold for JSON-RPC style
+request processing. The full generated API surface is still incomplete, but the
+core context and chain helpers below now load and pass smoke tests:
 
-## Overview
-This library provides a robust, zero-dependency implementation of Rpc Middleware for the Common Lisp ecosystem. It is designed to be highly portable, performant, and easy to integrate into any SBCL/CCL/ECL environment.
+- `context-get`, `context-set`, `context-delete`, `context-has-key-p`
+- `chain-add`, `chain-remove`, `chain-clear`, `run-chain`
+- `continue-chain`, `short-circuit`, `abort-chain`
+- `result-status`, `result-response`
 
-## Getting Started
-
-Load the system using ASDF:
+## Installation
 
 ```lisp
-(asdf:load-system #:cl-rpc-middleware)
+(asdf:load-system :cl-rpc-middleware)
 ```
 
-## Usage Example
+## Example
 
 ```lisp
-;; Initialize the environment
-(let ((ctx (cl-rpc-middleware:initialize-rpc-middleware :initial-id 42)))
-  ;; Perform batch processing using the built-in standard toolkit
-  (multiple-value-bind (results errors)
-      (cl-rpc-middleware:rpc-middleware-batch-process '(1 2 3) #'identity)
-    (format t "Processed ~A items with ~A errors.~%" (length results) (length errors))))
+(let ((context (cl-rpc-middleware:make-middleware-context))
+      (chain (cl-rpc-middleware:make-middleware-chain)))
+  (cl-rpc-middleware:chain-add
+   chain
+   (lambda (ctx)
+     (cl-rpc-middleware:context-set ctx :authenticated t)))
+  (cl-rpc-middleware:run-chain chain context))
+```
+
+## Testing
+
+```lisp
+(asdf:test-system :cl-rpc-middleware)
 ```
 
 ## License
-Apache-2.0
+
+Apache-2.0. See `LICENSE`.
